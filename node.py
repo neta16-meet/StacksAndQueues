@@ -13,6 +13,7 @@ class Node:
 	def getValue(self):
 		return self.value
 
+#Implementing the Stack class through Node
 class Stack:
 	def __init__(self):
 		self.items = None
@@ -34,14 +35,17 @@ class Stack:
 		return self.items.getValue()
 
 	def size(self):
+		if self.isEmpty():
+			return 0
 		count = 0
 		point = self.items
 		while point != None:
-			count ++
+			count += 1
 			point = point.getNext()
 
 		return count
 
+#Implementing the Queue class through Node
 class Queue:
 	def __init__(self):
 		self.items = None
@@ -49,6 +53,29 @@ class Queue:
 	def isEmpty(self):
 		return self.items == None
 
-	def enqueue(self, node):
-		
+	def enqueue(self, value):
+		node = Node(value)
+		if self.isEmpty():
+			self.items = node
+		else:
+			point = self.items
+			while point.getNext() != None:
+				point = point.getNext()
+			point.setNext(node)
 
+	def dequeue(self):
+		node = self.items
+		self.items = self.items.getNext()
+		return node
+
+	def size(self):
+		if self.isEmpty():
+			return 0
+		count = 0
+		point = self.items
+		while point != None:
+			count += 1
+			point = point.getNext()
+		return count
+
+		
