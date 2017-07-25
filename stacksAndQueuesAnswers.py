@@ -47,3 +47,33 @@ def switchStacks(s1, s2):
         s2.push(s3.pop().getValue())
 
 # ------------------- Queue answers ----------------------------
+def reverse(q):
+    s = Stack()
+    while not q.isEmpty():
+        s.push(q.dequeue().getValue())
+
+    while not s.isEmpty():
+        q.enqueue(s.pop().getValue())
+
+def positiveAndNegative(q):
+    negQ = Queue()
+    posQ = Queue()
+
+    item = None
+    zero = False
+    while not q.isEmpty():
+        item = q.dequeue().getValue()
+        if item < 0:
+            negQ.enqueue(item)
+        elif item > 0:
+            posQ.enqueue(item)
+        else:
+            zero = True
+    
+    while not negQ.isEmpty():
+        q.enqueue(negQ.dequeue().getValue())
+
+    if zero:
+        q.enqueue(0)
+    while not posQ.isEmpty():
+        q.enqueue(posQ.dequeue().getValue())
