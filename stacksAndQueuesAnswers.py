@@ -1,5 +1,11 @@
-from node import Stack
+from node import Stack, Queue
+'''
+For these exercises I used the classes implemented through Node,
+rather than through python lists. It was just personal preference,
+they can be solved either way.
+'''
 
+# ------------------- Stack answers -----------------------------
 def isBalancedExpression(st):
     stack = Stack()
     value = ""
@@ -16,6 +22,7 @@ def isBalancedExpression(st):
     return True
 
 def oppositeBracket(ch):
+    #helpful function for "isBalancedExpression" function
     if ch == ")":
         return "("
     if ch == "]":
@@ -39,3 +46,4 @@ def switchStacks(s1, s2):
     for i in range(size1):
         s2.push(s3.pop().getValue())
 
+# ------------------- Queue answers ----------------------------
